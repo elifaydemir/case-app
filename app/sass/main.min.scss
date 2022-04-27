@@ -1,0 +1,42 @@
+@import 'mixins';
+@import 'colors';
+@import 'reset';
+@import 'fontawesome';
+body{
+  font-size: 1em;
+  line-height: 1;
+  font-family: 'Roboto', sans-serif;
+  background: var(--backgroundColor);
+}
+//I have defined the css operations that I will use frequently as variables.
+.pl-0{
+  padding-left: 0 !important;
+}
+.purple{
+  color: var(--purple);
+}
+
+.pr-0 {
+  padding-right: 0 !important;
+}
+.ml-0 {
+  margin-left: 0 !important;
+}
+.mr-0 {
+  margin-right: 0 !important;
+}
+.w-100{
+  width: 100%;
+}
+.h-463{
+  height: 463px;
+ }
+.second-page{
+  border-top: 2px solid var(--black);
+  padding-top: 20px;
+}
+
+@import 'include/header/header';
+@import 'include/main/main';
+
+

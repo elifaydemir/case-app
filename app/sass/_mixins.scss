@@ -1,0 +1,180 @@
+
+//I have defined the css operations that are used separately in all browsers as variables with the help of mixin.
+@mixin btn-border-slide($color, $hoverColor, $borderWidth, $time) {
+    $easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+    position: relative;
+
+    display: inline-block;
+
+    cursor: pointer;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+
+        height: $borderWidth;
+        width: 100%;
+
+        background-color: $color;
+    }
+
+    &:before {
+        top: 0;
+    }
+
+    &:after {
+        bottom: 0;
+    }
+
+    &:hover {
+
+        & > * {
+
+            & > * {
+
+                &:before,
+                &:after {
+                    transform: translate3d(0, 0, 0);
+
+                }
+
+                & > * {
+                    &:before,
+                    &:after {
+                        transform: translate3d(0, 0, 0);
+                    }
+                }
+            }
+        }
+    }
+
+    & > * {
+
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+
+            height: 100%;
+            width: $borderWidth;
+
+            background-color: $color;
+        }
+
+        &:before {
+            left: 0;
+        }
+
+        &:after {
+            right: 0;
+        }
+
+        & > * {
+
+            &:before,
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                z-index: 9;
+
+                height: $borderWidth;
+                width: 100%;
+
+                background-color: $hoverColor;
+            }
+
+            &:before {
+                top: 0;
+
+                transform: translate3d(-105%, 0, 0);
+                transition: transform $time $easing;
+            }
+
+            &:after {
+                bottom: 0;
+
+                transform: translate3d(105%, 0, 0);
+                transition: transform $time $easing;
+            }
+
+            & > * {
+
+                &:before,
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    z-index: 9;
+
+                    height: 100%;
+                    width: $borderWidth;
+
+                    background-color: $hoverColor;
+                }
+
+                &:before {
+                    left: 0;
+
+                    transform: translate3d(0, 105%, 0);
+                    transition: transform $time $easing;
+                }
+
+                &:after {
+                    right: 0;
+
+                    transform: translate3d(0, -105%, 0);
+                    transition: transform $time $easing;
+                }
+            }
+        }
+    }
+}
+
+
+@mixin radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+@mixin animates($ms) {
+    -webkit-transition: $ms all;
+    -moz-transition: $ms all;
+    -ms-transition: $ms all;
+    -o-transition: $ms all;
+    transition: $ms all;
+}
+@mixin rotate($rotate){
+    -ms-transform: rotate($rotate);
+    -moz-transform: rotate($rotate);
+    -webkit-transform: rotate($rotate);
+    transform: rotate($rotate);
+}
+@mixin apperance($type){
+    -webkit-appearance: $type;
+    -moz-appearance:    $type;
+    appearance:         $type;
+}
+@mixin placeholder($color) {
+    &::-webkit-input-placeholder {
+        @include animates(500ms);
+        color: $color;
+    }
+    &:-moz-placeholder {
+        @include animates(500ms);
+        color: $color;
+    }
+    &:-ms-input-placeholder {
+        @include animates(500ms);
+        color: $color;
+    }
+    &::-moz-placeholder {
+        @include animates(500ms);
+        color: $color;
+    }
+}

@@ -1,0 +1,13 @@
+.header{
+  height: 112px;
+  .header-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    align-content: center;
+    font-size: 40px;
+    color: var(--border);
+    font-weight: bolder;
+  }
+}
